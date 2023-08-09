@@ -9,13 +9,13 @@ public class MainBattle {
     static Monster hitokage = new Hitokage();
     static Monster zenigame = new Monster("ゼニガメ");
 
-    public static void main(String[] args)  {
+    public static void main(String[] args) {
         List<Monster> monsters = monsterToField(hitokage, zenigame);
         System.out.println(MainBattle.getTheNameListMonster(monsters));
         try {
             String enemyMonster = getEnemyName(monsters);
             System.out.println(messageWhenEnemyEncounter(enemyMonster));
-        }catch (IllegalAccessException e){
+        } catch (IllegalAccessException e) {
             System.out.println(e.getMessage());
         }
         System.out.println("【それぞれのステータス】");
