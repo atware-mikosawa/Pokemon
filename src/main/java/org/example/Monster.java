@@ -64,4 +64,12 @@ public class Monster {
         this.hp = hp + (risingLv * 5);
         this.atk = atk + (risingLv * 3);
     }
+
+    public int getlv() {
+        return this.lv;
+    }
+
+    public String getStatsu() {
+        return "[" + this.name + " lv" + this.lv + "　攻撃力" + this.atk + " HP" + this.hp + "/" + this.hp + "]";
+    }
 }

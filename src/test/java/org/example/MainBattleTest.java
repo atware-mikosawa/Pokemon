@@ -24,8 +24,8 @@ class MainBattleTest {
     void バトルフィールドに出ているモンスター名がヒトカゲとゼニガメであること() {
         Monster hitokage = new Hitokage();
         Monster zenigame = new Monster("ゼニガメ");
-        String actual = MainBattle.toString(hitokage);
-        actual += MainBattle.toString(zenigame);
+        String actual = MainBattle.getMonsterNametoString(hitokage);
+        actual += MainBattle.getMonsterNametoString(zenigame);
         MatcherAssert.assertThat(
                 actual, CoreMatchers.allOf(
                         CoreMatchers.containsString("ヒトカゲ"),
