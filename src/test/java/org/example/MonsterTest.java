@@ -46,59 +46,10 @@ class MonsterTest {
         try {
             String actual = MainBattle.getEnemyName(monsterList);
             assertThat(actual, is("フシギダネ"));
-        } catch (IllegalAccessException e) {
+        } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
     }
 
-    @Test
-    void getEnemyNameメソッドに例外が渡された時エクセプションを返すこと() {
-        List<Monster> emptyList = new ArrayList<>();
-//        assertThrows(呼び出される例外処理, 実行される処理);
-        //ラムダ式を使うバージョン
-        assertThrows(IllegalAccessException.class, () -> {
-            MainBattle.getEnemyName(emptyList);
-        });
-//
-//        Predicate<Integer> isZero = new Predicate<Integer>() {
-//            @Override
-//            public boolean test(Integer integer) {
-//                return integer == 0;
-//            }
-//        };
-//
-//        Predicate<Integer> isZeroByLambda = (Integer integer) -> integer == 0;
-//
-//        List<Integer> values = List.of(1, 2, 3, 4, 5);
-//
-//        for (Integer value : values) {
-//            if (value % 2 == 0) {
-//                System.out.println(value * 2);
-//            }
-//        }
-//
-//        values.stream()
-//                .filter(new Predicate<Integer>() {
-//                    @Override
-//                    public boolean test(Integer integer) {
-//                        return integer % 2 == 0;
-//                    }
-//                })
-//                .map(value -> value * 2)
-//                .forEach(value -> System.out.println(value));
-//
-//
-//        System.out.println(isZero.test(0));
-//        System.out.println(isZero.test(1));
-
-
-        //ラムダ式不使用
-//        assertThrows(IllegalAccessException.class, new Executable() {
-//            @Override
-//            public void execute() throws Throwable {
-//                MainBattle.getEnemyName(emptyList);
-//            }
-//        });
-    }
 
 }

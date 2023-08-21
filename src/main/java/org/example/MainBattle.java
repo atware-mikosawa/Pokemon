@@ -17,20 +17,40 @@ public class MainBattle {
         try {
             String enemyMonster = getEnemyName(monsters);
             System.out.println(messageWhenEnemyEncounter(enemyMonster));
-        } catch (IllegalAccessException e) {
+        } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
+        try {
+            String myMonsterName = getMyMonsterName(monsters);
+            System.out.println(messageForMyMonster(myMonsterName));
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            System.out.println(Arrays.toString(e.getStackTrace()));
+        }
+        System.out.println("ボンっ！");
         System.out.println("【それぞれのステータス】");
         System.out.println(hitokage.getStatsu());
         System.out.println(fushigidane.getStatsu());
     }
 
-    public static String getEnemyName(List<Monster> monster) throws IllegalAccessException {
+    public static String getMyMonsterName(List<Monster> monsters) throws IllegalArgumentException {
+        if (monsters.size() > 1) {
+            Monster MyMonster = monsters.get(0);
+            return MyMonster.getName();
+        }
+        throw new IllegalArgumentException("味方のモンスターが正常に読み込まれていません。");
+    }
+
+    public static String getEnemyName(List<Monster> monster) throws IllegalArgumentException {
         if (monster.size() > 1) {
             Monster enemyMonster = monster.get(1);
             return enemyMonster.getName();
         }
-        throw new IllegalAccessException("敵のモンスターが正常に入力されていません");
+        throw new IllegalArgumentException("敵のモンスターが正常に入力されていません");
+    }
+
+    public static String messageForMyMonster(String myMonster) {
+        return "ゆけっ！" + myMonster;
     }
 
     public static String messageWhenEnemyEncounter(String enemyMonster) {
