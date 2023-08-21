@@ -2,19 +2,13 @@ package org.example;
 
 import org.hamcrest.CoreMatchers;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.function.Executable;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.BiFunction;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
 
-import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.*;
 
 class MonsterTest {
     @Test
@@ -65,37 +59,37 @@ class MonsterTest {
         assertThrows(IllegalAccessException.class, () -> {
             MainBattle.getEnemyName(emptyList);
         });
-
-        Predicate<Integer> isZero = new Predicate<Integer>() {
-            @Override
-            public boolean test(Integer integer) {
-                return integer == 0;
-            }
-        };
-
-        Predicate<Integer> isZeroByLambda = (Integer integer) -> integer == 0;
-
-        List<Integer> values = List.of(1, 2, 3, 4, 5);
-
-        for (Integer value : values) {
-            if (value % 2 == 0) {
-                System.out.println(value * 2);
-            }
-        }
-
-        values.stream()
-                .filter(new Predicate<Integer>() {
-                    @Override
-                    public boolean test(Integer integer) {
-                        return integer % 2 == 0;
-                    }
-                })
-                .map(value -> value * 2)
-                .forEach(value -> System.out.println(value));
-
-
-        System.out.println(isZero.test(0));
-        System.out.println(isZero.test(1));
+//
+//        Predicate<Integer> isZero = new Predicate<Integer>() {
+//            @Override
+//            public boolean test(Integer integer) {
+//                return integer == 0;
+//            }
+//        };
+//
+//        Predicate<Integer> isZeroByLambda = (Integer integer) -> integer == 0;
+//
+//        List<Integer> values = List.of(1, 2, 3, 4, 5);
+//
+//        for (Integer value : values) {
+//            if (value % 2 == 0) {
+//                System.out.println(value * 2);
+//            }
+//        }
+//
+//        values.stream()
+//                .filter(new Predicate<Integer>() {
+//                    @Override
+//                    public boolean test(Integer integer) {
+//                        return integer % 2 == 0;
+//                    }
+//                })
+//                .map(value -> value * 2)
+//                .forEach(value -> System.out.println(value));
+//
+//
+//        System.out.println(isZero.test(0));
+//        System.out.println(isZero.test(1));
 
 
         //ラムダ式不使用

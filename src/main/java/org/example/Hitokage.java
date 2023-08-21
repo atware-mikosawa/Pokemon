@@ -18,7 +18,7 @@ public class Hitokage extends Monster {
 
     @Override
     public void levelUp(int risingLv) {
-        super.levelUp(risingLv);
+//        super.levelUp(risingLv);
         setHp(getHp() + (risingLv * 4));
         setAtk(getAtk() + (risingLv * 6));
     }

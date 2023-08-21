@@ -1,16 +1,12 @@
 package org.example;
 
-import com.sun.tools.javac.Main;
 import org.hamcrest.CoreMatchers;
-import org.hamcrest.Matcher;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestClassOrder;
 
 import java.util.List;
-import java.util.Set;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.is;
 
 public class DisplayTest {
     @Test

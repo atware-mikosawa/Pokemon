@@ -1,16 +1,18 @@
 package org.example;
 
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class MainBattle {
-    static Monster hitokage = new Hitokage();
-    static Monster zenigame = new Monster("ゼニガメ");
+//    static Hitokage hitokage = new Hitokage(3);
+    //    static Monster zenigame = new Monster("ゼニガメ");
+//    static Fushigidane fushigidane = new Fushigidane(3);
+
 
     public static void main(String[] args) {
-        List<Monster> monsters = monsterToField(hitokage, zenigame);
+        Hitokage hitokage = new Hitokage(3);
+        Fushigidane fushigidane = new Fushigidane(3);
+        List<Monster> monsters = monsterToField(hitokage, fushigidane);
+
         System.out.println(MainBattle.getTheNameListMonster(monsters));
         try {
             String enemyMonster = getEnemyName(monsters);
@@ -20,7 +22,7 @@ public class MainBattle {
         }
         System.out.println("【それぞれのステータス】");
         System.out.println(hitokage.getStatsu());
-        System.out.println(zenigame.getStatsu());
+        System.out.println(fushigidane.getStatsu());
     }
 
     public static String getEnemyName(List<Monster> monster) throws IllegalAccessException {
