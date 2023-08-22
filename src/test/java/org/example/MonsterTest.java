@@ -13,21 +13,21 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class MonsterTest {
     @Test
     void モンスターはHpを持つこと() {
-        Monster monster = new Monster("ヒトカゲ", 100, 15);
+        Monster monster = new Monster("ヒトカゲ", 100, 15, 10);
         int actual = monster.getHp();
         assertThat(actual, is(100));
     }
 
     @Test
     void インスタンス化されたモンスターは攻撃力を持つこと() {
-        Monster monster = new Monster("ヒトカゲ", 100, 15);
+        Monster monster = new Monster("ヒトカゲ", 100, 15,10);
         int actual = monster.getAtk();
         assertThat(actual, is(15));
     }
 
     @Test
     void レベルアップすると正常にステータスが変わること() {
-        Monster monster = new Monster("ヒトカゲ", 100, 15, 3);
+        Monster monster = new Monster("ヒトカゲ", 100, 15, 10,3);
         String actual = monster.getStatsu();
         System.out.println(actual);
         assertThat(actual, CoreMatchers.allOf(//全てのコアマッチャーズには次の全てが含まれています

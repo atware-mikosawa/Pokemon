@@ -6,6 +6,7 @@ public class Hitokage extends Monster {
         setName("ヒトカゲ");
         setHp(70);
         setAtk(18);
+        setSpeed(15);
     }
 
     Hitokage(int lv) {
@@ -21,5 +22,6 @@ public class Hitokage extends Monster {
 //        super.levelUp(risingLv);
         setHp(getHp() + (risingLv * 4));
         setAtk(getAtk() + (risingLv * 6));
+        setSpeed(getSpeed() + (risingLv * 5));
     }
 }

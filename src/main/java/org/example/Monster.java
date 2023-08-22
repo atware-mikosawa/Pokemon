@@ -4,12 +4,14 @@ public class Monster {
     private String name;
     private int hp;
     private int atk;
+    private int speed;
     private int lv;
 
     Monster() {
         this.name = "unknown";
         this.hp = 80;
         this.atk = 15;
+        this.speed = 10;
         this.lv = 1;
     }
 
@@ -18,14 +20,15 @@ public class Monster {
         this.name = name;
     }
 
-    Monster(String name, int hp, int atk) {
+    Monster(String name, int hp, int atk, int speed) {
         this(name);
         this.hp = hp;
         this.atk = atk;
+        this.speed = speed;
     }
 
-    Monster(String name, int hp, int atk, int lv) {
-        this(name, hp, atk);
+    Monster(String name, int hp, int atk, int speed, int lv) {
+        this(name, hp, atk, speed);
         this.lv = lv;
         if (lv > 1) {
             levelUp(lv);
@@ -56,6 +59,14 @@ public class Monster {
         return this.atk;
     }
 
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
+    public int getSpeed() {
+        return this.speed;
+    }
+
     public void setLv(int lv) {
         this.lv = lv;
     }
@@ -63,6 +74,7 @@ public class Monster {
     public void levelUp(int risingLv) {
         this.hp = hp + (risingLv * 5);
         this.atk = atk + (risingLv * 3);
+        this.speed = speed + (risingLv * 3);
     }
 
     public int getlv() {
@@ -70,6 +82,6 @@ public class Monster {
     }
 
     public String getStatsu() {
-        return "[" + this.name + " lv" + this.lv + "　攻撃力" + this.atk + " HP" + this.hp + "/" + this.hp + "]";
+        return "[" + this.name + " lv" + this.lv + "　攻撃力" + this.atk + "　スピード" + this.speed + " HP" + this.hp + "/" + this.hp + "]";
     }
 }

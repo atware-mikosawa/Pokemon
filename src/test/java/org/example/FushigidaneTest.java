@@ -11,7 +11,8 @@ public class FushigidaneTest {
         Fushigidane fushigidane = new Fushigidane(5);
         assertThat(fushigidane.getStatsu(), CoreMatchers.allOf(
                 CoreMatchers.containsString("120"),
-                CoreMatchers.containsString("34")
+                CoreMatchers.containsString("34"),
+                CoreMatchers.containsString("29")
         ));
     }
 }

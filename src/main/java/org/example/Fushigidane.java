@@ -6,6 +6,7 @@ public class Fushigidane extends Monster {
         setName("フシギダネ");
         setHp(90);
         setAtk(14);
+        setSpeed(9);
     }
 
     Fushigidane(int lv) {
@@ -20,5 +21,6 @@ public class Fushigidane extends Monster {
     public void levelUp(int risingLv) {
         setHp(getHp() + (risingLv * 6));
         setAtk(getAtk() + (risingLv * 4));
+        setSpeed(getSpeed() + (risingLv * 4));
     }
 }

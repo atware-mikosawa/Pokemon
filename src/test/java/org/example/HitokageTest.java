@@ -14,7 +14,8 @@ public class HitokageTest {
         System.out.println(actual);
         assertThat(actual, CoreMatchers.allOf(
                 CoreMatchers.containsString("90"),//文字列には次の文字が含まれていること
-                CoreMatchers.containsString("48")
+                CoreMatchers.containsString("48"),
+                CoreMatchers.containsString("40")
         ));
 
     }
