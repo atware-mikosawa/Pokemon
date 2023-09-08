@@ -3,7 +3,8 @@ package main;
 import java.util.Random;
 
 public class Battle {
-    public static AbstractMonster getPriorityAttacker(AbstractMonster myMonster, AbstractMonster other) {
+    //先行後攻の決定
+    public static Monster getPriorityAttacker(Monster myMonster, Monster other) {
         int mySpd = myMonster.getSpd();
         int otherSpd = other.getSpd();
         Random random = new Random();
@@ -12,6 +13,20 @@ public class Battle {
             return other;
         } else if (otherSpd < mySpd) {
             return myMonster;
+        } else if (Math.abs(mySpd - otherSpd) <= 10) {
+            int num = random.nextInt(10) + 1;
+            if (num % 2 == 0) {
+                return other;
+            } else {
+                return myMonster;
+            }
+        } else if (Math.abs(otherSpd - mySpd) <= 10) {
+            int num = random.nextInt(10) + 1;
+            if (num % 2 == 0) {
+                return other;
+            } else {
+                return myMonster;
+            }
         } else {
             int num = random.nextInt(10) + 1;
             if (num % 2 == 0) {
@@ -20,5 +35,17 @@ public class Battle {
                 return myMonster;
             }
         }
+    }
+
+    //バトル結果の判定
+    public static Result returnResult(int myMonsterHp, int otherHp) {
+        if (otherHp == 0) {
+            return Result.WIN;
+        } else if (myMonsterHp == 0) {
+            return Result.LOSE;
+        } else {
+            return Result.DRAW;
+        }
+
     }
 }

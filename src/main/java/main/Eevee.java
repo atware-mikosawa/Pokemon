@@ -1,7 +1,7 @@
 package main;
 
 
-public class Eevee extends AbstractMonster {
+public class Eevee extends Monster {
     Eevee() {
         super(40, 40, 4, 4, "ノーマル", 1);
         this.name = "イーブイ";

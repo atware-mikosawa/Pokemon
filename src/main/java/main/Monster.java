@@ -1,7 +1,7 @@
 package main;
 
 
-abstract class AbstractMonster {
+abstract class Monster {
     protected String name;
     protected int hp;
     protected int hpMax;
@@ -10,7 +10,7 @@ abstract class AbstractMonster {
     protected String attribute;
     protected int level;
 
-    AbstractMonster(int hp, int hpMax, int attackPoint, int spd, String attribute, int level) {
+    Monster(int hp, int hpMax, int attackPoint, int spd, String attribute, int level) {
         this.hp = hp;
         this.hpMax = hpMax;
         this.attackPoint = attackPoint;
@@ -80,7 +80,7 @@ abstract class AbstractMonster {
         return "[名前:" + this.getName() + " アタック:" + this.getAttackPoint() + " スピード:" + this.getSpd() + " タイプ:" + this.getAttribute() + " HP" + this.getHp() + "/" + this.getHpMax() + "]";
     }
 
-    public void attack(AbstractMonster myMonster, AbstractMonster other) {
+    public void attack(Monster myMonster, Monster other) {
         int attackPoint = myMonster.getAttackPoint();
         int receiveOther = other.getHpMax();
         double typeValue = Rule.decideCompatibility(myMonster.getAttribute(), other.getAttribute());

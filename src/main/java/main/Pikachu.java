@@ -1,7 +1,7 @@
 package main;
 
 
-public class Pikachu extends AbstractMonster {
+public class Pikachu extends Monster {
     Pikachu() {
         super(30, 30, 4, 3, "電気", 1);
         this.name = "ピカチュウ";
