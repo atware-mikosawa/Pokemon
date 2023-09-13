@@ -8,11 +8,24 @@ import static org.hamcrest.Matchers.is;
 
 public class PrintBattleTest {
     @Test
-    void モンスターを2体受け取って戦闘前のメッセージが表示されること() {
-        Eevee myMonster = new Eevee();
+    void 敵モンスターを受け取って戦闘前のメッセージが表示されること() {
         Pikachu other = new Pikachu();
-        //テキストブロック
-        String expected = "あっ!野生のピカチュウが出てきた!\n" + "ゆけっ!イーブイ";
-        assertThat(PrintBattle.messageMonsterAppend(myMonster, other), is(expected));
+        String expected = "あっ!野生のピカチュウが出てきた!";
+        assertThat(PrintBattle.messageEnemyMonsterAppend(other), is(expected));
+    }
+
+    @Test
+    void 味方モンスターの値を受け取ってメッセージが表示されること() {
+        assertThat(PrintBattle.messageMyMonsterAppend(new Pikachu()), is("ゆけっ!ピカチュウ"));
+    }
+    @Test
+    void 戦闘コマンドを受け取る直前のメッセージが正しく出ること() {
+        Pikachu pikachu = new Pikachu();
+        String expected = """
+                ピカチュウはどうする?
+                1:たたかう     3:バッグ
+                2:逃げる       4:ポケモン
+                                """;
+        assertThat(PrintBattle.beforeReceiveCommand(pikachu), is(expected));
     }
 }

@@ -10,10 +10,13 @@ public class Rule {
         map.put("電気水", 2D);
         map.put("電気土", 0.5);
         map.put("ノーマル電気", 1D);
+        map.put("ノーマルノーマル", 1D);
     }
 
-    public static double decideCompatibility(String attackType, String receiveType) {
-        return map.get(attackType + receiveType);
+    public static double decideCompatibility(Attribute attackType, Attribute receiveType) {
+        String attackTypeName = attackType.getName();
+        String receiveTypeName = receiveType.getName();
+        return map.get(attackTypeName + receiveTypeName);
     }
 }
 

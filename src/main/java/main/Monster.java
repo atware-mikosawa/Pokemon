@@ -7,10 +7,10 @@ abstract class Monster {
     protected int hpMax;
     protected int attackPoint;
     protected int spd;
-    protected String attribute;
+    protected Attribute attribute;
     protected int level;
 
-    Monster(int hp, int hpMax, int attackPoint, int spd, String attribute, int level) {
+    Monster(int hp, int hpMax, int attackPoint, int spd, Attribute attribute, int level) {
         this.hp = hp;
         this.hpMax = hpMax;
         this.attackPoint = attackPoint;
@@ -56,8 +56,12 @@ abstract class Monster {
         return this.spd;
     }
 
-    public String getAttribute() {
+    public Attribute getAttribute() {
         return this.attribute;
+    }
+
+    public String getAttributeName() {
+        return this.attribute.getName();
     }
 
     public void setLevel(int level) {
@@ -77,7 +81,7 @@ abstract class Monster {
     }
 
     public String getStatus() {
-        return "[名前:" + this.getName() + " アタック:" + this.getAttackPoint() + " スピード:" + this.getSpd() + " タイプ:" + this.getAttribute() + " HP" + this.getHp() + "/" + this.getHpMax() + "]";
+        return "[名前:" + this.getName() + " アタック:" + this.getAttackPoint() + " スピード:" + this.getSpd() + " タイプ:" + this.getAttributeName() + " HP" + this.getHp() + "/" + this.getHpMax() + "]";
     }
 
     public void attack(Monster myMonster, Monster other) {

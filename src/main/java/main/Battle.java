@@ -1,51 +1,73 @@
 package main;
 
 import java.util.Random;
+import java.util.Scanner;
 
 public class Battle {
-    //先行後攻の決定
-    public static Monster getPriorityAttacker(Monster myMonster, Monster other) {
-        int mySpd = myMonster.getSpd();
-        int otherSpd = other.getSpd();
-        Random random = new Random();
-
-        if (mySpd < otherSpd) {
-            return other;
-        } else if (otherSpd < mySpd) {
-            return myMonster;
-        } else if (Math.abs(mySpd - otherSpd) <= 10) {
-            int num = random.nextInt(10) + 1;
-            if (num % 2 == 0) {
-                return other;
-            } else {
-                return myMonster;
+    //敵モンスターをランダムに出現させる
+    public static Monster getRandomMonster() {
+        Random rand = new Random();
+        int num = rand.nextInt(2);
+        switch (num) {
+            case (0) -> {
+                return new Pikachu();
             }
-        } else if (Math.abs(otherSpd - mySpd) <= 10) {
-            int num = random.nextInt(10) + 1;
-            if (num % 2 == 0) {
-                return other;
-            } else {
-                return myMonster;
+            case (1) -> {
+                return new Eevee();
             }
-        } else {
-            int num = random.nextInt(10) + 1;
-            if (num % 2 == 0) {
-                return other;
-            } else {
-                return myMonster;
+            default -> {
+                throw new IllegalStateException();
             }
         }
     }
 
+    public static int commandReturnValue() {
+        Scanner sc = new Scanner(System.in);
+        return sc.nextInt();
+    }
+
+    //先行後攻の決定
+    public static Monster getPriorityAttacker(Monster myMonster, Monster other) throws InvalidValueException {
+        if (myMonster == null || other == null) {
+            throw new InvalidValueException();
+        }
+        int mySpd = myMonster.getSpd();
+        int otherSpd = other.getSpd();
+        Random random = new Random();
+
+        if ((mySpd - otherSpd) >= 0 && (mySpd - otherSpd) <= 10) {
+            int num = random.nextInt(10) + 1;
+            if (num % 2 == 0) {
+                return other;
+            } else {
+                return myMonster;
+            }
+        } else if ((otherSpd - mySpd) >= 0 && (otherSpd - mySpd) <= 10) {
+            int num = random.nextInt(10) + 1;
+            if (num % 2 == 0) {
+                return other;
+            } else {
+                return myMonster;
+            }
+        } else if (mySpd < otherSpd) {
+            return other;
+        } else return myMonster;
+
+    }
+
+
     //バトル結果の判定
     public static Result returnResult(int myMonsterHp, int otherHp) {
-        if (otherHp == 0) {
+        if (otherHp < 1) {
             return Result.WIN;
-        } else if (myMonsterHp == 0) {
+        } else if (myMonsterHp < 1) {
             return Result.LOSE;
         } else {
             return Result.DRAW;
         }
+    }
 
+    public static Result returnResult(int myMonsterHp) {
+        throw new IllegalArgumentException("引数が1個しか渡されていません");
     }
 }

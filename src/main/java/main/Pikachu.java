@@ -3,17 +3,17 @@ package main;
 
 public class Pikachu extends Monster {
     Pikachu() {
-        super(30, 30, 4, 3, "電気", 1);
+        super(30, 30, 4, 3, Attribute.ELECTRICITY, 1);
         this.name = "ピカチュウ";
     }
 
     Pikachu(String name) {
-        super(30, 30, 4, 3, "電気", 1);
+        super(30, 30, 4, 3, Attribute.ELECTRICITY, 1);
         this.name = name;
     }
 
     Pikachu(int level) {
-        super(30, 30, 4, 3, "電気", 1);
+        super(30, 30, 4, 3, Attribute.ELECTRICITY, 1);
         this.name = "ピカチュウ";
         this.level = level;
         if (1 < level) {

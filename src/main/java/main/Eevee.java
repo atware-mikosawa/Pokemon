@@ -3,17 +3,17 @@ package main;
 
 public class Eevee extends Monster {
     Eevee() {
-        super(40, 40, 4, 4, "ノーマル", 1);
+        super(40, 40, 4, 4, Attribute.NORMAL, 1);
         this.name = "イーブイ";
     }
 
     Eevee(String name) {
-        super(40, 40, 4, 4, "ノーマル", 1);
+        super(40, 40, 4, 4, Attribute.NORMAL, 1);
         this.name = name;
     }
 
     Eevee(int level) {
-        super(40, 40, 4, 4, "ノーマル", 1);
+        super(40, 40, 4, 4, Attribute.NORMAL, 1);
         this.name = "イーブイ";
         this.level = level;
         if (1 < level) {
