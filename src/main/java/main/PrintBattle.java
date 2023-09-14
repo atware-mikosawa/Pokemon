@@ -16,4 +16,5 @@ public class PrintBattle {
                 2:逃げる       4:ポケモン
                                 """;
     }
+
 }

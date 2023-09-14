@@ -71,14 +71,25 @@ public class MonsterTest {
 
         @Test
         void モンスターが攻撃したら攻撃力分だけ相手のHPが減ること() {
-            pikachu.attack(pikachu, eevee);
-            assertThat(eevee.getHpMax(), is(36));
+            pikachu.attack(eevee);
+            assertThat(eevee.getHp(), is(36));
         }
 
         @Test
         void 現在のモンスターのステータスが返されること() {
             String expected = "[名前:ピカチュウ アタック:4 スピード:3 タイプ:電気 HP30/30]";
             assertThat(pikachu.getStatus(), is(expected));
+        }
+
+        @Test
+        void 攻撃を行った後メッセージが出ること() {
+            assertThat(pikachu.afterAttackMessage(), is("ピカチュウの攻撃!"));
+        }
+
+        @Test
+        void 何ダメージ与えたのかメッセージされること() {
+            int damage = pikachu.attack(eevee);
+            assertThat(pikachu.printDamage(damage), is("ピカチュウは4ダメージ与えた!"));
         }
     }
 }

@@ -28,4 +28,5 @@ public class PrintBattleTest {
                                 """;
         assertThat(PrintBattle.beforeReceiveCommand(pikachu), is(expected));
     }
+
 }
