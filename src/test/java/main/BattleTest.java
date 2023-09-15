@@ -7,6 +7,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
+
 import java.util.Map;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -64,6 +65,39 @@ public class BattleTest {
         );
     }
 
+    @ParameterizedTest
+    @MethodSource
+    void それぞれの結果に名前があること(Result result, String expected) {
+        assertThat(result.toString(), is(expected));
+    }
+
+    static Stream<Arguments> それぞれの結果に名前があること() {
+        return Stream.of(
+                arguments(Result.WIN, "勝ち"),
+                arguments(Result.LOSE, "負け"),
+                arguments(Result.DRAW, "引き分け")
+        );
+    }
+
+    @Test
+    void WINを受け取ったら勝利のメッセージが返ること() {
+        Pikachu myMonster = new Pikachu();
+        assertThat(Result.WIN.resultMessage(myMonster), is("ピカチュウの勝ち！"));
+    }
+
+    @ParameterizedTest
+    @MethodSource
+    void それぞれの結果に応じてメッセージが返ること(Result result, String expected) {
+        assertThat(result.resultMessage(new Pikachu()), is(expected));
+    }
+
+    static Stream<Arguments> それぞれの結果に応じてメッセージが返ること() {
+        return Stream.of(
+                arguments(Result.WIN, "ピカチュウの勝ち！"),
+                arguments(Result.LOSE, "ピカチュウの負け！"),
+                arguments(Result.DRAW, "まだバトルは続いている！")
+        );
+    }
 
     @Nested
     class ExceptionTest {

@@ -1,5 +1,7 @@
 package main;
 
+import java.io.IOException;
+import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -21,9 +23,15 @@ public class Battle {
         }
     }
 
-    public static int commandReturnValue() {
+    public static int commandReturnValue() throws InputMismatchException {
         Scanner sc = new Scanner(System.in);
-        return sc.nextInt();
+        int result = 0;
+        try {
+            result = sc.nextInt();
+        } catch (InputMismatchException e) {
+            System.out.println("1~4の値を入力してください");
+        }
+        return result;
     }
 
     //先行後攻の決定
@@ -67,7 +75,7 @@ public class Battle {
         }
     }
 
-    public static Result returnResult(int myMonsterHp) {
+    public static Result returnResult(int myMonsterHp) throws IllegalArgumentException {
         throw new IllegalArgumentException("引数が1個しか渡されていません");
     }
 }
