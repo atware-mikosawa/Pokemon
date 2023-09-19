@@ -22,6 +22,7 @@ public class RuleTest {
     static Stream<Arguments> 取得するタイプに応じて正しい数値が返ること() {
         return Stream.of(
                 arguments(NORMAL, NORMAL, 1.0),
+                arguments(ELECTRICITY, ELECTRICITY, 1.0),
                 arguments(NORMAL, ELECTRICITY, 1.0),
                 arguments(ELECTRICITY, WATER, 2.0)
         );

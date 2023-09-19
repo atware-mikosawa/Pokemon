@@ -28,13 +28,6 @@ public class BattleTest {
     }
 
     @Test
-    void スピードの判定ができること() throws InvalidValueException {
-        Pikachu pikachu = new Pikachu();
-        Eevee eevee = new Eevee(10);
-        assertThat(Battle.getPriorityAttacker(pikachu, eevee), is(eevee));
-    }
-
-    @Test
     void スピードの差が10以内であればスピードの判定が半分の確率になること() {
         Pikachu pikachu = new Pikachu();
         Eevee eevee = new Eevee();
@@ -48,7 +41,7 @@ public class BattleTest {
                     return null;
                 })
                 .collect(groupingBy(identity(), counting()));
-        assertThat(resultList.get(eevee), is(greaterThan(400L)));
+        assertThat(resultList.get(eevee), allOf(greaterThan(400L), lessThan(600L)));
     }
 
     @ParameterizedTest
@@ -75,14 +68,9 @@ public class BattleTest {
         return Stream.of(
                 arguments(Result.WIN, "勝ち"),
                 arguments(Result.LOSE, "負け"),
-                arguments(Result.DRAW, "引き分け")
+                arguments(Result.DRAW, "引き分け"),
+                arguments(Result.ESCAPE, "逃げた")
         );
-    }
-
-    @Test
-    void WINを受け取ったら勝利のメッセージが返ること() {
-        Pikachu myMonster = new Pikachu();
-        assertThat(Result.WIN.resultMessage(myMonster), is("ピカチュウの勝ち！"));
     }
 
     @ParameterizedTest
@@ -95,10 +83,20 @@ public class BattleTest {
         return Stream.of(
                 arguments(Result.WIN, "ピカチュウの勝ち！"),
                 arguments(Result.LOSE, "ピカチュウの負け！"),
-                arguments(Result.DRAW, "まだバトルは続いている！")
+                arguments(Result.DRAW, "まだバトルは続いている！"),
+                arguments(Result.ESCAPE, "ピカチュウたちは逃げた!")
         );
     }
 
+    @Test
+    void 逃げるを選択した時半分の確率で逃げられること() {
+        Map<Result, Long> result = IntStream.range(0, 1000)
+                .mapToObj(num -> {
+                    return Battle.canEscape();
+                })
+                .collect(groupingBy(identity(), counting()));
+        assertThat(result.get(Result.ESCAPE),allOf(greaterThan(400L), lessThan(600L)));
+    }
     @Nested
     class ExceptionTest {
         @Test

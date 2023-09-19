@@ -3,7 +3,8 @@ package main;
 public enum Result {
     WIN("勝ち"),
     LOSE("負け"),
-    DRAW("引き分け");
+    DRAW("引き分け"),
+    ESCAPE("逃げた");
     private String name;
 
     Result(String name) {
@@ -24,6 +25,9 @@ public enum Result {
             }
             case DRAW -> {
                 return "まだバトルは続いている！";
+            }
+            case ESCAPE -> {
+                return monster.getName() + "たちは逃げた!";
             }
             default -> throw new IllegalArgumentException();
         }

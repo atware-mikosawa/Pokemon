@@ -63,6 +63,16 @@ public class Battle {
 
     }
 
+    public static Result canEscape() {
+        Random rand = new Random();
+        int tmp = rand.nextInt(10) + 1;
+        if (tmp <= 5) {
+            return Result.ESCAPE;
+        }else{
+            return Result.DRAW;
+        }
+    }
+
 
     //バトル結果の判定
     public static Result returnResult(int myMonsterHp, int otherHp) {

@@ -28,6 +28,9 @@ public class MainBattle {
                     receiveNum = Battle.commandReturnValue();
                 } catch (InputMismatchException e) {
                     decide = false;
+                } catch (NullPointerException e) {
+                    System.out.println("もう一度数値を入力してください");
+                    decide = false;
                 }
             }
             //たたかう
@@ -35,7 +38,6 @@ public class MainBattle {
                 try {
                     firstAttackMonster = Battle.getPriorityAttacker(myMonster, enemyMonster);
                 } catch (InvalidValueException e) {
-                    System.out.println();
                 }
                 //自分が先行の場合
                 if (firstAttackMonster == myMonster) {
@@ -57,7 +59,13 @@ public class MainBattle {
                     System.out.println(myMonster.printDamage(damage) + "\n");
                 }
             } else {// 逃げる
-
+                Result result = Battle.canEscape();
+                if (result == Result.ESCAPE) {
+                    System.out.println(result.resultMessage(myMonster));
+                    break;
+                } else {
+                    System.out.println("逃げられない!");
+                }
             }
 //            ステータス確認
             System.out.println("相手のステータス");
@@ -69,8 +77,6 @@ public class MainBattle {
             if (battleResult == Result.WIN || battleResult == Result.LOSE) {
                 System.out.println("バトル終了！");
                 break;
-            } else {
-
             }
         }
     }

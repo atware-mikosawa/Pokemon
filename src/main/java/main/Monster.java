@@ -84,12 +84,12 @@ abstract class Monster {
         return "[名前:" + this.getName() + " アタック:" + this.getAttackPoint() + " スピード:" + this.getSpd() + " タイプ:" + this.getAttributeName() + " HP" + this.getHp() + "/" + this.getHpMax() + "]";
     }
 
-    public int attack(Monster monster) {
+    public int attack(Monster other) {
         int attackPoint = this.getAttackPoint();
-        int receiveOtherHp = monster.getHp();
-        double typeValue = Rule.decideCompatibility(this.getAttribute(), monster.getAttribute());
+        int receiveOtherHp = other.getHp();
+        double typeValue = Rule.decideCompatibility(this.getAttribute(), other.getAttribute());
         int result = (int) (attackPoint * typeValue);
-        monster.setHp(receiveOtherHp - result);
+        other.setHp(receiveOtherHp - result);
         return result;
     }
 

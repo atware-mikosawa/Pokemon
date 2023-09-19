@@ -11,6 +11,7 @@ public class Rule {
         map.put("電気土", 0.5);
         map.put("ノーマル電気", 1D);
         map.put("ノーマルノーマル", 1D);
+        map.put("電気電気", 1D);
     }
 
     public static double decideCompatibility(Attribute attackType, Attribute receiveType) {
