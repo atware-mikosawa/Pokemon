@@ -1,8 +1,5 @@
 package main;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -14,8 +11,6 @@ import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 public class MoveTest {
-    Taiatari taiatari = new Taiatari();
-
     @ParameterizedTest
     @MethodSource
     void 各わざに名前があること(Move move, String expected) {
@@ -42,9 +37,17 @@ public class MoveTest {
         );
     }
 
-    @Test
-    void たいあたりにタイプがあること() {
-        assertThat(taiatari.getAttribute(), is(Attribute.NORMAL));
+    @ParameterizedTest
+    @MethodSource
+    void 各わざにタイプがあること(Move move, Attribute expected) {
+        assertThat(move.getAttribute(), is(expected));
+    }
+
+    static Stream<Arguments> 各わざにタイプがあること() {
+        return Stream.of(
+                arguments(new Taiatari(), Attribute.NORMAL),
+                arguments(new Hikkaku(), Attribute.NORMAL)
+        );
     }
 
 }

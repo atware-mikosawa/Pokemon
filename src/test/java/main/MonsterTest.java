@@ -3,6 +3,8 @@ package main;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -32,6 +34,13 @@ public class MonsterTest {
             pikachu = new Pikachu();
             eevee = new Eevee();
         }
+
+        @ParameterizedTest
+        @MethodSource
+        void 各モンスターに固有の名前があること(Monster monster, String expected) {
+            assertThat(monster.getName(), is(expected));
+        }
+//        static Stream<Arguments>
 
         @Test
         void 各モンスターに固有の名前があること() {
